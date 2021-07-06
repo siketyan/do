@@ -25,8 +25,5 @@ fn main() -> Result<()> {
     let dofile: Dofile = serde_yaml::from_reader(file).map_err(Error::Deserialize)?;
     let target = args().nth(1).unwrap_or_default();
 
-    match dofile.find_task(&target) {
-        Some(t) => t.run().map_err(Error::Dofile),
-        _ => Ok(()),
-    }
+    dofile.run(&target).map_err(Error::Dofile)
 }
