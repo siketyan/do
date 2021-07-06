@@ -11,6 +11,7 @@ name = "do"
 path = "src/main.rs"
 
 [dependencies]
+console = "0.14"
 serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.8"
 thiserror = "1.0"
