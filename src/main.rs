@@ -1,3 +1,4 @@
+mod console;
 mod dofile;
 mod operations;
 
@@ -21,9 +22,16 @@ pub(crate) enum Error {
 type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
+    console::running("Finding Dofile");
+    console::success("Found: .do.yaml");
+
     let file = File::open("./.do.yaml").map_err(Error::IO)?;
     let dofile: Dofile = serde_yaml::from_reader(file).map_err(Error::Deserialize)?;
     let target = args().nth(1).unwrap_or_default();
 
-    dofile.run(&target).map_err(Error::Dofile)
+    console::running("Doing");
+    dofile.run(&target).map_err(Error::Dofile)?;
+    console::success("Done");
+
+    Ok(())
 }
