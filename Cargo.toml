@@ -1,6 +1,10 @@
 [package]
 name = "do-app"
+description = "Alternative of make, without making anything."
 version = "0.1.0"
+license = "MIT"
+homepage = "https://github.com/siketyan/do"
+repository = "https://github.com/siketyan/do.git"
 authors = ["Naoki Ikeguchi <root@siketyan.dev>"]
 edition = "2018"
 
